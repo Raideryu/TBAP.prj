@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ebksmua27crv"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_kot5l"]
+
+[node name="Main" type="Node2D"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(294.25, 167.75)
+scale = Vector2(589.5, 336.5)
+mesh = SubResource("QuadMesh_kot5l")
