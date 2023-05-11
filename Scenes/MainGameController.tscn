@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://5dheaws1qvij"]
+
+[ext_resource type="Script" path="res://Scripts/GameControllers/MainGameController.gd" id="1_opwah"]
+
+[node name="MainGameController" type="Node"]
+script = ExtResource("1_opwah")
+scenes_path = ["res://Scenes/Menus/MainMenu.tscn", "res://Scenes/Levels/Level1.tscn"]
