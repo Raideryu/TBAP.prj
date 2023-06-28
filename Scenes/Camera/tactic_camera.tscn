@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://clhjwt26mo7fh"]
+
+[ext_resource type="Script" path="res://Scripts/LevelLogic/tactic_camera.gd" id="1_qnmt2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nvssf"]
+
+[node name="TacticCamera" type="CharacterBody3D"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_qnmt2")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+projection = 1
+size = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+shape = SubResource("BoxShape3D_nvssf")

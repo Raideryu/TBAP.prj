@@ -9,13 +9,15 @@ enum TEST_ENUM {
 	One_Two,
 }
 
-const c_Preload_Test = preload("res://Scripts/GameControllers/GameLibrary.gd")
+#const c_Preload_Test = preload("res://Scripts/GameControllers/GameLibrary.gd")
 
 @export_category("Test Category")
 @export_group("Test Group")
 @export var e_test_export : String
 @export var e_export_array : Array[int]
-@export var e_alt_enum : c_Preload_Test.SCENES_LIST
+#@export var e_alt_enum : c_Preload_Test.SCENES_LIST
+
+@onready var CharLib #= CharacterLibrary.new()
 
 var public_var : String = "string"
 
@@ -24,7 +26,8 @@ func _init():
 	pass
 
 func _ready():
-	c_Preload_Test.instantiate()
+	#c_Preload_Test.instantiate()
+	pass
 
 func do_something(value: int, array: Array[Sprite3D]) -> Array[int]:
 	var out: Array[int]

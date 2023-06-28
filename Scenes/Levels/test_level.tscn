@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://cf0ok75gbvvw5"]
+
+[ext_resource type="Script" path="res://Scripts/GameLogic/scene_connector.gd" id="1_rf1og"]
+[ext_resource type="Script" path="res://Scripts/UI/level_test_ui.gd" id="2_4hkne"]
+[ext_resource type="Script" path="res://Scripts/LevelLogic/level_controller.gd" id="2_iwyp7"]
+[ext_resource type="PackedScene" uid="uid://chaeh4f5yhmmt" path="res://Scenes/Arenas/test_arena.tscn" id="3_xy0cd"]
+
+[node name="SceneController" type="Node"]
+script = ExtResource("1_rf1og")
+scene_name = "TestLevel"
+scene_type = 1
+ui_controller_path = NodePath("Control")
+level_controller_path = NodePath("LevelController")
+is_level = true
+can_connect_ui = false
+
+[node name="LevelController" type="Node3D" parent="."]
+script = ExtResource("2_iwyp7")
+launching_phase = 1
+
+[node name="Arena" parent="LevelController" instance=ExtResource("3_xy0cd")]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="LevelController"]
+_spawnable_scenes = PackedStringArray("res://Scenes/player_controller.tscn")
+spawn_path = NodePath("../Players")
+spawn_limit = 2
+
+[node name="Players" type="Node3D" parent="LevelController"]
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_4hkne")
+
+[node name="ReturnButton" type="Button" parent="Control"]
+layout_mode = 1
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 13.0
+offset_bottom = 13.0
+text = "Return"
+
+[connection signal="pressed" from="Control/ReturnButton" to="Control" method="_on_return_button_pressed"]

@@ -1,0 +1,113 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckqgagt1esuwf"]
+
+[ext_resource type="Script" path="res://Scripts/UI/level_weapon_profile.gd" id="1_slftd"]
+
+[node name="Weapon" type="HBoxContainer"]
+offset_right = 401.0
+offset_bottom = 80.0
+script = ExtResource("1_slftd")
+
+[node name="Name" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Name"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Name"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Weapon name"
+
+[node name="Range" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Range" type="Label" parent="Range"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Range"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="Range"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Count" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Count" type="Label" parent="Count"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "AC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="Count"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Damage" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Damage" type="Label" parent="Damage"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Damage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="Damage"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AP" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AP" type="Label" parent="AP"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "AP
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="AP"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Type" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Type" type="Label" parent="Type"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "AT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="Type"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1

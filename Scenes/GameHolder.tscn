@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbirtp6fj4yk8"]
+
+[ext_resource type="Script" path="res://Scripts/GameLogic/main_logic.gd" id="1_q866s"]
+
+[node name="GameController" type="Node"]
+script = ExtResource("1_q866s")
+scenes_path = Array[String](["res://Scenes/Menus/main_menu_test.tscn", "res://Scenes/Levels/test_level.tscn"])
+
+[node name="SceneSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Scenes/Levels/test_level.tscn")
+spawn_path = NodePath("../Scenes")
+spawn_limit = 1
+
+[node name="Scenes" type="Node" parent="."]

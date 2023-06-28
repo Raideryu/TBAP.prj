@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://exuo1qk38qaw"]
+
+[ext_resource type="PackedScene" uid="uid://clhjwt26mo7fh" path="res://Scenes/Camera/tactic_camera.tscn" id="2_v3vn5"]
+[ext_resource type="PackedScene" uid="uid://cy28ox4sbo1yn" path="res://Scenes/UI/player_ui.tscn" id="3_0jdyu"]
+
+[node name="PlayerController" type="Node3D"]
+
+[node name="TacticCamera" parent="." instance=ExtResource("2_v3vn5")]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+
+[node name="PlayerInput" type="MultiplayerSynchronizer" parent="."]
+root_path = NodePath(".")
+
+[node name="Units" type="Node3D" parent="."]
+
+[node name="PlayerUI" parent="." instance=ExtResource("3_0jdyu")]

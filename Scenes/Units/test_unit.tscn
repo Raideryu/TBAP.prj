@@ -1,0 +1,179 @@
+[gd_scene load_steps=16 format=3 uid="uid://d3dk75psii8md"]
+
+[ext_resource type="Script" path="res://Scripts/Player/Units/unit_controller.gd" id="1_336j2"]
+[ext_resource type="Resource" uid="uid://bv4pgtr83rofe" path="res://Scenes/Weapons/short_sks_55.tres" id="2_sp1ku"]
+[ext_resource type="Script" path="res://Scripts/Weapons/WeaponsSrc/weapon_resource.gd" id="3_e5kx1"]
+[ext_resource type="Texture2D" uid="uid://d220vf8jj61ad" path="res://Arts/Sprites/Characters/Test_sprite.png" id="3_ixipq"]
+
+[sub_resource type="Resource" id="Resource_um12d"]
+script = ExtResource("3_e5kx1")
+weapon_type = 1
+weapon_name = 1
+attack_type = 0
+attack_range = 1
+attack_count = 3
+attack_damage = 1
+armor_piercing = 1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j4o25"]
+
+[sub_resource type="Animation" id="Animation_acrkt"]
+resource_name = "DO_DAMAGE"
+
+[sub_resource type="Animation" id="Animation_4iay5"]
+resource_name = "IDLE"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.597929, 0), Vector3(0, 0.597929, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ke6go"]
+resource_name = "JUMP"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.597929, 0), Vector3(0, 2.45337, 0), Vector3(0, 0.597929, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bxe4y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.597929, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8i18i"]
+resource_name = "TAKE_DAMAGE"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(0.0507657, 1.41421, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.85, 0.85, 0.85), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(0.0693482, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.597929, 0), Vector3(0, 0.508265, 0), Vector3(0, 0.597929, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_flpsb"]
+_data = {
+"DO_DAMAGE": SubResource("Animation_acrkt"),
+"IDLE": SubResource("Animation_4iay5"),
+"JUMP": SubResource("Animation_ke6go"),
+"RESET": SubResource("Animation_bxe4y"),
+"TAKE_DAMAGE": SubResource("Animation_8i18i")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hwbxp"]
+animation = &"IDLE"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_pv5my"]
+states/IDLE/node = SubResource("AnimationNodeAnimation_hwbxp")
+states/IDLE/position = Vector2(285, 93)
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_bnask"]
+
+[node name="Unit" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_336j2")
+unit_name = "Soviet Light Infantryman"
+actions_count = 2
+movement_length = 5
+armour_value = 2
+weapons = Array[ExtResource("3_e5kx1")]([ExtResource("2_sp1ku"), SubResource("Resource_um12d")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.6, 0)
+shape = SubResource("CapsuleShape3D_j4o25")
+
+[node name="Tile" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711891, 0)
+
+[node name="Character" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.597929, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("3_ixipq")
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Character"]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_flpsb")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="Character"]
+tree_root = SubResource("AnimationNodeStateMachine_pv5my")
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_bnask")
+
+[node name="Stats" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.708153, 0)
+
+[node name="Name" type="Label3D" parent="Stats"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9821, 0)
+billboard = 1
+text = "Name
+"
+
+[node name="Wounds" type="Label3D" parent="Stats"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.814, 0)
+billboard = 1
+text = "0/10"
+
+[node name="Armour" type="Label3D" parent="Stats"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66, 0)
+billboard = 1
+text = "10/10"

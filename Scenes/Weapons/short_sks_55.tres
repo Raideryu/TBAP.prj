@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponConfig" load_steps=2 format=3 uid="uid://bv4pgtr83rofe"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/WeaponsSrc/weapon_resource.gd" id="1_87vpj"]
+
+[resource]
+script = ExtResource("1_87vpj")
+weapon_type = 0
+weapon_name = 0
+attack_type = 0
+attack_range = 5
+attack_count = 3
+attack_damage = 2
+armor_piercing = 1

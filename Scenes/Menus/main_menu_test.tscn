@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://6001qe8itlwd"]
+
+[ext_resource type="Script" path="res://Scripts/GameLogic/scene_connector.gd" id="1_lbq61"]
+[ext_resource type="PackedScene" uid="uid://plufi13miyqa" path="res://Scenes/UI/main_menu_ui.tscn" id="2_53ll3"]
+
+[node name="SceneController" type="Node"]
+script = ExtResource("1_lbq61")
+scene_name = "MainMenu"
+scene_type = null
+ui_controller_path = NodePath("Control")
+is_level = null
+can_connect_ui = null
+
+[node name="Control" parent="." instance=ExtResource("2_53ll3")]
